@@ -1,0 +1,255 @@
+/**
+ * @desc:页面编辑面板样式
+ * @author:laserji
+ * @mail:jiguang1984#gamil.com
+ * @date:2012-11-28
+ */
+
+/* 测试用样式 */
+
+/* 最外层容器 */
+body{-webkit-user-select:none;text-align:left;}
+[data-pg="layout"]{min-height:60px;padding-bottom:30px; outline:2px dotted #ddd;-webkit-user-select:auto;}
+
+/* 模块可编辑部分 */
+[data-pg="md-container"]{min-height:60px;}
+
+/* 模块容器 */
+[data-pg="md"]{cursor:pointer;}
+
+/* 选中样式 */
+/*::selection { background:transparent; }*/
+/*::-moz-selection { background:transparent; }*/
+/*::-webkit-selection { background:transparent; }*/
+.md_cur{outline:2px dotted #00ff00;}
+.layout_highlight{outline:2px dotted #999;background-color:#f7f7f7;cursor:pointer;}
+.md_highlight{background-color:#DEDCFF !important;cursor:pointer;}
+
+*{outline:none;}
+
+/* 操作面板 */
+.pg_panel_wrap{background:#333;color:#fff;z-index:9999;position:fixed;top:0;bottom:0;left:0;width:220px;border:1px solid #000;box-sizing:border-box;padding:170px 0 0 0;}
+.pg_panel_wrap *{margin:0;padding:0;}
+.pg_panel_header{position:relative;height:170px;margin-top:-170px;}
+.pg_panel_header h2{height:40px;background:#222;padding:0 10px;font:500 18px/40px \5FAE\8F6F\96C5\9ED1;letter-spacing:2px;position:relative;}
+.pg_panel_header h2 a{display:block;width:23px;height:24px;border-radius:24px;line-height:24px;color:#fff;font-size:18px;text-align:center;overflow:hidden;border:2px solid #fff;position:absolute;right:10px;top:5px;font-family:'Segoe UI Symbol';}
+.pg_panel_header h2 a:hover{text-decoration:none;}
+
+/* 操作面板——操作按钮 */
+.pg_panel_opt{text-align:center;overflow:hidden;margin:12px 0;}
+.pg_panel_opt a{float:left;font:14px \5FAE\8F6F\96C5\9ED1;color:#ccc;margin:0 10px 0 28px;text-decoration:none;}
+.pg_panel_opt a:hover{color:#fff;}
+.pg_panel_opt a i{display:inline-block;*display:inline;zoom:1;vertical-align:top;background-image:url(../img/bg_pg.png);}
+.pg_panel_opt .ico_back{background-position:-111px -88px;width:31px;height:31px;margin:1px 0 5px;}
+.pg_panel_opt .ico_preview{background-position:-143px -88px;width:28px;height:30px;margin:2px 0 5px;}
+.pg_panel_opt .ico_clear{background-position:-111px -120px;width:24px;height:29px;margin:3px 0 5px;}
+.pg_panel_opt a:hover .ico_clear{background-position:-135px -120px;height:33px;margin:0 0 4px;}
+.pg_panel_opt .btn_submit{margin-top:13px;}
+
+
+/* 操作面板——模块列表 */
+.pg_panel_modlist{overflow-x:hidden;overflow-y:auto;height:100%;}
+.pg_panel_modlist h3{height:30px;background:#222;color:#ccc;margin:0 0 1px 0;padding:0 10px;font:bold 14px/30px \5FAE\8F6F\96C5\9ED1;letter-spacing:2px;cursor:pointer;/*border-bottom:1px solid #060709;border-top:1px solid #515960;background:#32383f;*/position:relative;}
+.pg_panel_modlist h3:focus,
+.pg_panel_modlist h3:active,
+.pg_panel_modlist h3.ui-state-active{/*background:#3b4551;border-bottom:1px solid #575757;*/background:#666;outline:none;}
+.pg_panel_modlist h3:hover{color:#fff;}
+.pg_panel_modlist h3 i{font:18px/18px \5B8B\4F53;position:absolute;width:18px;overflow:hidden;bottom:-11px;left:50%;margin-left:-9px;display:none;}
+.pg_panel_modlist .ui-state-active i{display:block;}
+.pg_panel_modlist h3 .angle_outter{color:#575757;}
+.pg_panel_modlist h3 .angle_inner{color:#3B4551;bottom:-10px;}
+.pg_panel_modlist ul{padding:10px 0;}
+.pg_panel_modlist li{background:#fff;margin:10px;padding:10px;min-height:40px;line-height:40px;text-align:center;border:0 none;cursor:move;position:relative;}
+.pg_panel_modlist li:hover{outline:4px solid #4784D8;}
+.pg_panel_modlist li:hover:after{content:attr(data-title);position:absolute;top:50%;margin-top:-20px;color:#333;font:700 18px/40px \5FAE\8F6F\96C5\9ED1;left:0;right:0;text-align:center;}
+.pg_panel_modlist li:hover:before{position:absolute;background:rgba(255,255,255,.6 );top:0;bottom:0;left:0;right:0;content:'\20';}
+.pg_panel_modlist li img{vertical-align:middle;max-width:170px;display:inline;}
+.pg_panel_modlist textarea{display:none;}
+
+/* 操作面板——模块列表滚动条_WEBKIT */
+.pg_panel_modlist::-webkit-scrollbar{width:10px;height:10px;}
+.pg_panel_modlist::-webkit-scrollbar-button{display:none;}
+.pg_panel_modlist::-webkit-scrollbar-track{background-color:black;}
+.pg_panel_modlist::-webkit-scrollbar-track-piece{background:#333;border-left:1px solid #000;}
+.pg_panel_modlist::-webkit-scrollbar-thumb{background:#777;}
+
+/* 操作面板——模块列表滚动条_IE */
+.pg_panel_modlist{
+	SCROLLBAR-ARROW-COLOR:#333333;
+	SCROLLBAR-FACE-COLOR:#666666;
+	SCROLLBAR-DARKSHADOW-COLOR:#333333;
+	SCROLLBAR-HIGHLIGHT-COLOR:#333333;
+	SCROLLBAR-3DLIGHT-COLOR:#333333;
+	SCROLLBAR-SHADOW-COLOR:#333333;
+	SCROLLBAR-TRACK-COLOR:#333333;
+}
+/* 模块属性设置 */
+.pg_popup{background:#333;color:#fff;z-index:10000;position:fixed;top:40%;left:50%;margin-left:-200px;min-width:400px;border:1px solid #000;box-shadow:0 0  10px #000;font-family:\5FAE\8F6F\96C5\9ED1;transition:opacity 0.5s ease;-webkit-transition:opacity 0.5s ease;}
+.pg_popup_hide{opacity:0;transition:opacity 0.5s ease;-webkit-transition:opacity 0.5s ease;}
+.pg_popup_hd{position:relative;height:40px;cursor:move;}
+.pg_popup_hd h3{line-height:40px;padding:0 10px;font-size:14px;font-weight:500;letter-spacing:1px;}
+.pg_popup_hd button{background:none;color:#ccc;border:0 none;font-size:28px;line-height:40px;height:40px;width:28px;overflow:hidden;position:absolute;top:0;right:10px;text-align:center;cursor:pointer}
+.pg_popup_hd button:hover{color:#fff;}
+.pg_popup_cont{padding:10px;font-size:12px;}
+.pg_popup_cont label{vertical-align:middle;margin:0 0 4px 0;color:#ddd;display:block;}
+.pg_popup_cont input[type='text'],
+.pg_popup_cont input[type='number']{background:#666;border:0 none;height:30px;padding:0 8px;font-size:14px;outline: none;font-family: "Microsoft Yahei",Verdana,Simsun;color:#eee;vertical-align:middle;}
+
+.pg_popup_cont input[type='text']{width:364px;}
+.pg_popup_cont input[type='number']{width:60px;}
+.pg_popup_cont input[type='number']{height:28px;}
+
+.pg_popup_cont input[type='text']:focus,
+.pg_popup_cont input[type='number']:focus{outline:1px solid #fff;}
+
+.pg_popup_frm .option{_zoom:1;margin:0 0 12px 0;}
+.pg_popup_frm .option:after{clear:both;content:'\20';display:block;}
+.pg_popup_frm button{height:28px;padding:0 8px;border:0 none;min-width:72px;background:#666;color:#fff;font-size:14px;font-family:\5FAE\8F6F\96C5\9ED1;cursor:pointer;float:left;margin:0 2px 0 0;}
+.pg_popup_frm button:hover{background:#999;}
+.pg_popup_frm strong{color:#EC447F;}
+
+.pg_popup_ft{text-align:right;padding:10px;}
+.pg_popup_ft button{margin:0 0 0 10px;}
+
+.frm_radio{margin:0 20px 0 0;}
+.frm_radio label{display:inline;vertical-align:baseline;margin:0 0 0 3px;}
+.frm_radio input[type='radio'] {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	border-radius: 100%;
+	border: 1px solid #ddd;
+	display: inline-block;
+	height: 14px;
+	position: relative;
+	top: 2px;
+	vertical-align: baseline;
+	width: 14px;
+  	cursor:pointer;
+}
+.frm_radio input[type='radio']:active{
+	border: 1px solid #5c5c5c;
+}
+.frm_radio input[type='radio']:checked::before {
+  background: #fff;
+  border-radius: 14px;
+  content: '\20';
+  display: inline-block;
+  font-weight: bold;
+  height: 8px;
+  left: 0; 
+  top: 0;
+  margin:2px 0 0 2px;
+  position: absolute;
+  vertical-align: top;
+  width: 8px;
+}
+
+.btn_submit,
+.btn_normal{height:30px;padding:0 8px;border:0 none;min-width:84px;margin:0 10px 0 0;background:#ec447f;color:#fff;font-size:14px;font-family:\5FAE\8F6F\96C5\9ED1;cursor:pointer;}
+.btn_normal{background-color:rgba(182,182,182,.7);color:#333;}
+
+.fontbutton{margin:0 0 20px 0;}
+.fontbutton ul{_zoom:1;}
+.fontbutton ul:after{clear:both;content:'\20';display:block;}
+.fontbutton li{float:left;height:26px;margin:0 2px 0 0;}
+.fontbutton li a{
+text-decoration: none;
+border: solid 1px transparent;
+position: relative;
+display: block;
+height: 16px;
+width: 16px;
+overflow: hidden;
+direction: ltr;
+outline: 0;
+padding: 5px;
+color:#fff;
+background:#666;
+}
+.fontbutton li a:hover{background:#999;}
+.fontbutton li.selected a{background:#fff;color:#000;}
+.fontbutton li .texticon{text-align:center;}
+.fontbutton li .texticon span{
+font-family: Segoe UI,sans-serif;
+font-size: 17px;
+display: inline-block;
+position: relative;
+vertical-align: text-top;
+top: -1px;
+line-height: 100%;
+width: 12px;
+}
+.fontbutton .bold span{font-weight:bold;}
+.fontbutton .italic span{font-style:italic;}
+.fontbutton .underline span{text-decoration:underline;}
+.fontbutton .fontname span{transform:scale(1.3);-webkit-transform:scale(1.3);display:inline-block;}
+.fontbutton .fgcolor span{border-bottom:2px solid #fff;top:-2px!important;}
+.fontbutton .fontsize{position:relative;}
+.fontbutton .fontsize .texticon{text-align:left;}
+.fontbutton .fontsize:after,
+.fontbutton .fontsize:before{
+	content:'\20';
+	cursor:pointer;
+	position:absolute;
+	width:0;
+	height:0;
+	overflow:hidden;
+	font-size:0;
+	display:inline-block;
+	border-width:4px;
+	top:2px;
+	right:3px;
+	border-color:transparent transparent #fff transparent;
+	border-style: dashed dashed solid dashed;
+}
+.fontbutton .fontsize:before{
+	top:11px;
+	right:3px; 
+	border-color: #fff transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+	z-index:2;
+}
+.fontbutton .insertlink span{left:-2px;}
+.fontbutton .justifyleft span,
+.fontbutton .justifycenter span,
+.fontbutton .justifyright span{border-top:1px solid #fff;border-bottom:1px solid #fff;height:8px;left:-1px;width:18px!important;top:1px!important;}
+.fontbutton .justifyleft span:after{display:block;content:'\20';border-top:1px solid #fff;border-bottom:1px solid #fff;width:12px;height:8px;position:relative;top:4px;}
+
+.fontbutton .justifycenter span:after{display:block;content:'\20';border-top:1px solid #fff;border-bottom:1px solid #fff;width:12px;height:8px;position:relative;top:4px;left:3px;}
+
+.fontbutton .justifyright span:after{display:block;content:'\20';border-top:1px solid #fff;border-bottom:1px solid #fff;width:12px;height:8px;position:relative;top:4px;left:6px;}
+
+/*样式设置浮层*/
+.fontoption{border:1px solid #fff;background:#666;position:absolute;z-index:3;}
+.fontoption li{position:relative;}
+.fontoption .selected{background:#fff;color:#000;}
+
+/*字体名称*/
+.fontoption .fontname li{line-height:24px;font-size:14px;cursor:pointer;padding:0 10px;width:110px;}
+.fontoption .fontname li:hover{background:#999;}
+
+/*字体大小*/
+.fontoption .fontsize li{line-height:24px;font-size:14px;cursor:pointer;padding:0 10px;width:60px;}
+.fontoption .fontsize li:hover{background:#999;}
+
+/*字体颜色*/
+.fontoption .fgcolor{width:60px;padding:0 10px}
+.fontoption .fgcolor li{line-height:24px;cursor:pointer;width:20px;height:20px;float:left;margin:10px 5px;}
+.fontoption .fgcolor li:hover{background:#999;}
+.fontoption .fgcolor li[data-color='#666']{border:1px solid #777;height:18px;width:18px;}
+
+/*插入链接*/
+.fontoption .insertlink input[type='text']{width:300px;}
+
+/* 编辑区提示样式 */
+#pg_msg_box{float:left; position: absolute;left:50%;padding:6px 10px;background:#333;background:rgba(0,0,0,.7);color:#fff;font:14px/1.5em "Microsoft Yahei";}
+
+/* 表格编辑时，当前列样式 */
+.pg_cur_col,.pg_cur_row{background-color: #ffc4c4 !important;}
+
+/* 拖动排序高亮样式 */
+.ui-state-highlight {display: block; width:auto; height: 3em; line-height: 1.5em; border: 1px solid #f7f7f7; background-color: #ffc4c4; }
+.ui-draggable-helper{display: block !important;  background-color: #fff !important;}
+
+/* 面板中的提示信息 */
+.panel_message{background-color:#fff;color:#333;padding:6px 10px;}
